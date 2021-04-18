@@ -79,6 +79,15 @@ client.connect(err => {
           res.send(result.insertedCount>0)
         })
       })
+
+      app.post('/admin', (req, res) =>{
+        console.log(req.body);
+        const email=req.body.email;
+        adminCollection.find({email: email})
+        .toArray((err, admin)=>{
+          res.send(admin.length>0)
+        })
+      })
    
 });
 
